@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan Calculator</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f2f5, #e4e7eb);
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #1a2a44;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+            border-top: 4px solid #4a90e2;
+        }
+        h1 {
+            color: #1a2a44;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 1.2em;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+        label {
+            display: block;
+            color: #1a2a44;
+            margin: 20px 0 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            color: #1a2a44;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+            background: #fff;
+        }
+        button {
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+            border: none;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.3);
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f7ff, #e6f0fa);
+            border-radius: 10px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            display: none;
+            color: #1a2a44;
+            border-left: 4px solid #4a90e2;
+        }
+        .providers {
+            margin-top: 50px;
+            text-align: left;
+        }
+        .providers h2 {
+            color: #1a2a44;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .providers ul {
+            list-style: none;
+            padding: 0;
+        }
+        .providers li {
+            margin: 15px 0;
+        }
+        .providers a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .providers a:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95em;
+        }
+        .footer a {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #357abd;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Loan Calculator</h1>
+        <div class="subtitle">Estimate your monthly payments with ease</div>
+        <label for="principal">Loan Amount ($):</label>
+        <input type="number" id="principal" placeholder="e.g., 10000" min="1">
+        <label for="interest">Annual Interest Rate (%):</label>
+        <input type="number" id="interest" placeholder="e.g., 5.5" step="0.1" min="0">
+        <label for="term">Loan Term (Years):</label>
+        <input type="number" id="term" placeholder="e.g., 10" min="1">
+        <button onclick="calculateLoan()">Calculate</button>
+        <div id="result"></div>
+        <div class="providers">
+            <h2>Student Loan Providers</h2>
+            <ul>
+                <li><a href="https://www.salliemae.com" target="_blank">Sallie Mae</a></li>
+                <li><a href="https://www.discover.com/student-loans" target="_blank">Discover Student Loans</a></li>
+                <li><a href="https://www.ascentfunding.com" target="_blank">Ascent Funding</a></li>
+                <li><a href="https://www.citizensbank.com/student-lending" target="_blank">Citizens Bank</a></li>
+                <li><a href="https://www.earnest.com/student-loans" target="_blank">Earnest</a></li>
+                <li><a href="https://www.sofi.com/student-loans" target="_blank">SoFi</a></li>
+                <li><a href="https://www.collegeave.com" target="_blank">College Ave</a></li>
+                <li><a href="https://prodigyfinance.com" target="_blank">Prodigy Finance</a></li>
+                <li><a href="https://www.sparrowfi.com" target="_blank">Sparrow</a></li>
+                <li><a href="https://studentaid.gov" target="_blank">Federal Student Aid (U.S. Government)</a></li>
+                <li><a href="https://www.elfi.com" target="_blank">Education Loan Finance (ELFI)</a></li>
+                <li><a href="https://www.risla.com" target="_blank">Rhode Island Student Loan Authority (RISLA)</a></li>
+                <li><a href="https://www.customchoice.com" target="_blank">Custom Choice</a></li>
+                <li><a href="https://www.mpowerfinancing.com" target="_blank">MPower Financing</a></li>
+                <li><a href="https://www.laurelroad.com/student-loans" target="_blank">Laurel Road</a></li>
+                <li><a href="https://www.lendkey.com" target="_blank">LendKey</a></li>
+                <li><a href="https://www.pnc.com/en/personal-banking/borrowing/private-student-loans.html" target="_blank">PNC Bank</a></li>
+                <li><a href="https://www.wellsfargo.com/student" target="_blank">Wells Fargo</a></li>
+                <li><a href="https://www.nelnetbank.com/student-loans" target="_blank">Nelnet Bank</a></li>
+                <li><a href="https://www.commonbond.co/student-loans" target="_blank">CommonBond</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            © 2025 Adamo Group Holdings Ltd. Co.<br>
+            Comments & Suggestions: <a href="mailto:aghlc.nm@gmail.com">aghlc.nm@gmail.com</a>
+        </div>
+    </div>
+
+    <script>
+        function calculateLoan() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const interest = parseFloat(document.getElementById('interest').value) / 100 / 12;
+            const term = parseInt(document.getElementById('term').value) * 12;
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(principal) || isNaN(interest) || isNaN(term) || principal <= 0 || interest < 0 || term <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Please enter valid numbers for all fields.';
+                return;
+            }
+
+            const payment = (principal * interest * Math.pow(1 + interest, term)) / (Math.pow(1 + interest, term) - 1);
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `Monthly Payment: $${payment.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
